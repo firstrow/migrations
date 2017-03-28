@@ -1,6 +1,7 @@
 package migrations
 
 import (
+	"os"
 	"strings"
 
 	"github.com/go-pg/pg"
@@ -8,9 +9,18 @@ import (
 )
 
 var tableName = "gopg_migrations"
+var migrationsPath string
+
+func init() {
+	migrationsPath, _ = os.Getwd()
+}
 
 func SetTableName(name string) {
 	tableName = name
+}
+
+func SetMigratonsPath(path string) {
+	migrationsPath = path
 }
 
 type DB interface {

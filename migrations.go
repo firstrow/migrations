@@ -219,8 +219,7 @@ func init() {
 	})
 }
 `
-	basepath, _ := os.Getwd()
-	file := path.Join(basepath, filename)
+	file := path.Join(migrationsPath, filename)
 
 	if _, err := os.Stat(file); os.IsNotExist(err) {
 		err := ioutil.WriteFile(file, []byte(contents), 0644)
